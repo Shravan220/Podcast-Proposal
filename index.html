@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Trade Intelligence Podcast — Amplifying Brand Voice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F3EE;
+  --cream2: #EDE8E0;
+  --ink: #111010;
+  --ink2: #2A2622;
+  --orange: #D94F0D;
+  --orange2: #FF6B35;
+  --gold: #C8973A;
+  --muted: #7A7068;
+  --white: #FFFFFF;
+  --blue: #1B2E6B;
+  --line: rgba(17,16,16,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 64px;
+  height: 72px;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 900;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+.nav-pill {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 10px 24px; border-radius: 100px;
+  cursor: pointer; border: none;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.25s; text-decoration: none;
+  display: inline-block;
+}
+.nav-pill:hover { background: var(--orange); transform: scale(1.03); }
+
+/* ─── HERO ─── */
+#hero {
+  padding: 140px 64px 80px;
+  max-width: 1400px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: blink 1.4s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+.hero-h1 em { font-style: italic; color: var(--orange); }
+
+.hero-sub {
+  font-size: 17px; line-height: 1.75; font-weight: 300;
+  color: var(--muted);
+  max-width: 440px;
+  margin-bottom: 40px;
+}
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-filled {
+  background: var(--orange);
+  color: #fff;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 14px 32px; border-radius: 100px;
+  border: none; cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.25s; text-decoration: none; display: inline-block;
+}
+.btn-filled:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(217,79,13,0.25); }
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 14px 32px; border-radius: 100px;
+  border: 1.5px solid rgba(17,16,16,0.25);
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.25s; text-decoration: none; display: inline-block;
+}
+.btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+.hero-meta {
+  margin-top: 52px; padding-top: 36px;
+  border-top: 1px solid var(--line);
+  display: flex; gap: 48px;
+}
+.meta-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; font-weight: 700;
+  color: var(--orange); line-height: 1;
+  margin-bottom: 4px;
+}
+.meta-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ─── HERO RADAR (right side) ─── */
+.hero-visual {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 28px;
+}
+.radar-wrap {
+  position: relative; width: 340px; height: 340px;
+}
+.radar-label-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 24px; width: 100%;
+}
+.radar-li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted);
+}
+.radar-li-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none; border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* ─── GENERAL SECTION ─── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
+.section-pad { padding: 100px 0; }
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 14px;
+}
+.big-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 900; letter-spacing: -1.5px;
+  line-height: 1.05; margin-bottom: 20px;
+}
+.big-title em { font-style: italic; }
+.body-text {
+  font-size: 16px; line-height: 1.75; font-weight: 300; color: var(--muted);
+  max-width: 580px;
+}
+
+/* ─── VISION SECTION (alternating editorial) ─── */
+#vision { background: var(--white); }
+.vision-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px; align-items: center;
+  margin-top: 56px;
+}
+.vision-text p {
+  font-size: 18px; line-height: 1.85; font-weight: 300;
+  color: var(--ink2);
+  border-left: 3px solid var(--orange);
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+.vision-pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.vision-pill {
+  background: var(--cream2);
+  color: var(--ink2);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 8px 18px; border-radius: 100px;
+  cursor: default; transition: all 0.25s;
+}
+.vision-pill:hover { background: var(--orange); color: #fff; }
+
+/* ─── PIPELINE INFOGRAPHIC ─── */
+.pipeline-wrap {
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 40px 36px;
+  border: 1px solid var(--line);
+}
+.pipeline-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+}
+.pipeline-steps { display: flex; flex-direction: column; gap: 4px; }
+.p-step {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: default;
+  transition: all 0.25s;
+}
+.p-step:last-child { border-bottom: none; }
+.p-step:hover { padding-left: 8px; }
+.p-step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; color: var(--orange);
+  min-width: 28px;
+}
+.p-step-bar {
+  height: 6px; border-radius: 4px;
+  background: linear-gradient(to right, var(--orange), var(--gold));
+  transition: width 1.2s cubic-bezier(0.34,1.2,0.64,1);
+  min-width: 0;
+}
+.p-step-label { font-size: 13px; font-weight: 500; color: var(--ink); min-width: 90px; }
+.p-step-pct { font-size: 13px; font-weight: 700; color: var(--orange); margin-left: auto; }
+
+/* ─── CHALLENGES ─── */
+#challenges { background: var(--ink); color: var(--cream); }
+#challenges .big-title { color: var(--cream); }
+#challenges .body-text { color: rgba(247,243,238,0.55); }
+
+.ch-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1px;
+  margin-top: 56px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.ch-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px;
+  transition: background 0.3s;
+  cursor: default;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.ch-card:hover { background: rgba(217,79,13,0.07); }
+.ch-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px; font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  position: absolute; top: 16px; right: 24px;
+  line-height: 1; pointer-events: none;
+  transition: color 0.3s;
+}
+.ch-card:hover .ch-num { color: rgba(217,79,13,0.12); }
+.ch-icon { font-size: 32px; margin-bottom: 16px; }
+.ch-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 8px;
+}
+.ch-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--cream); margin-bottom: 10px;
+}
+.ch-desc {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(247,243,238,0.55);
+}
+
+/* ─── WHY NOW — TIMELINE ─── */
+#whynow { background: var(--cream2); }
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  margin-top: 56px;
+  align-items: start;
+}
+
+/* ─── Animated Ring Infographic ─── */
+.rings-wrap {
+  position: relative; width: 320px; height: 320px;
+  margin: 0 auto;
+}
+.rings-center-text {
+  position: absolute;
+  inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+.rings-center-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 900; color: var(--ink);
+  line-height: 1;
+}
+.rings-center-sub {
+  font-size: 11px; color: var(--muted); letter-spacing: 1px;
+  text-transform: uppercase; margin-top: 4px;
+}
+
+.rings-legend { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+.rl-item { display: flex; align-items: center; gap: 14px; }
+.rl-bar-outer {
+  flex: 1; height: 8px;
+  background: rgba(17,16,16,0.1); border-radius: 100px; overflow: hidden;
+}
+.rl-bar-inner { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.34,1.2,0.64,1); }
+.rl-name { font-size: 12px; font-weight: 500; color: var(--ink2); min-width: 80px; }
+.rl-val { font-size: 12px; font-weight: 700; min-width: 36px; text-align: right; }
+
+/* ─── PROPER VERTICAL TIMELINE ─── */
+.timeline-reasons {
+  position: relative;
+  display: flex; flex-direction: column; gap: 0;
+  padding-left: 48px;
+}
+
+/* The continuous vertical spine line */
+.timeline-reasons::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--orange), var(--gold), #6d28d9, #1B2E6B);
+  border-radius: 2px;
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 28px;
+  cursor: default;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+/* Dot node on the line */
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -39px;
+  top: 22px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--orange);
+  transition: all 0.3s;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(217,79,13,0.12);
+}
+.tl-item:nth-child(2)::before { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200,151,58,0.12); }
+.tl-item:nth-child(3)::before { border-color: #6d28d9; box-shadow: 0 0 0 4px rgba(109,40,217,0.12); }
+.tl-item:nth-child(4)::before { border-color: #1B2E6B; box-shadow: 0 0 0 4px rgba(27,46,107,0.12); }
+
+.tl-item:hover::before {
+  transform: scale(1.3);
+  background: var(--orange);
+}
+.tl-item:nth-child(2):hover::before { background: var(--gold); }
+.tl-item:nth-child(3):hover::before { background: #6d28d9; }
+.tl-item:nth-child(4):hover::before { background: #1B2E6B; }
+
+/* Horizontal connector from dot to card */
+.tl-item::after {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 29px;
+  width: 24px; height: 1px;
+  background: var(--orange);
+  opacity: 0.4;
+}
+.tl-item:nth-child(2)::after { background: var(--gold); }
+.tl-item:nth-child(3)::after { background: #6d28d9; }
+.tl-item:nth-child(4)::after { background: #1B2E6B; }
+
+.tl-card {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding: 24px 24px;
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(17,16,16,0.06);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  transition: all 0.3s;
+}
+.tl-item:nth-child(2) .tl-card { border-left-color: var(--gold); }
+.tl-item:nth-child(3) .tl-card { border-left-color: #6d28d9; }
+.tl-item:nth-child(4) .tl-card { border-left-color: #1B2E6B; }
+
+.tl-item:hover .tl-card {
+  transform: translateX(6px);
+  box-shadow: 0 10px 32px rgba(17,16,16,0.12);
+}
+
+.tl-icon-box {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--cream2); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  transition: background 0.3s;
+}
+.tl-item:hover .tl-icon-box { background: rgba(217,79,13,0.1); }
+.tl-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; color: var(--orange); margin-bottom: 4px;
+  letter-spacing: 1.5px;
+}
+.tl-item:nth-child(2) .tl-num { color: var(--gold); }
+.tl-item:nth-child(3) .tl-num { color: #6d28d9; }
+.tl-item:nth-child(4) .tl-num { color: #1B2E6B; }
+.tl-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.tl-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── FRAMEWORK — HONEYCOMB / GRID ─── */
+#framework { background: var(--white); }
+
+.fw-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+.fw-right-text { font-size: 14px; color: var(--muted); max-width: 280px; line-height: 1.7; }
+
+/* ─── ANIMATED CONNECTED DOTS INFOGRAPHIC ─── */
+.process-flow {
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; padding-bottom: 8px;
+  margin-bottom: 56px;
+}
+.pf-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; flex-shrink: 0;
+}
+.pf-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  position: relative; cursor: default;
+  transition: transform 0.3s;
+}
+.pf-circle:hover { transform: scale(1.12); }
+.pf-label { font-size: 11px; font-weight: 600; text-align: center; color: var(--ink2); max-width: 72px; }
+.pf-arrow {
+  width: 48px; height: 2px; background: linear-gradient(to right, var(--orange), var(--gold));
+  margin-bottom: 36px; flex-shrink: 0;
+  position: relative;
+}
+.pf-arrow::after {
+  content: '▶'; position: absolute; right: -10px; top: 50%;
+  transform: translateY(-50%); font-size: 10px; color: var(--gold);
+}
+
+.fw-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+.fw-tile {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 24px;
+  cursor: default;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.fw-tile:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(217,79,13,0.2);
+}
+.fw-tile:hover * { color: #fff !important; }
+.fw-tile-icon { font-size: 28px; margin-bottom: 14px; }
+.fw-tile-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 6px;
+  transition: color 0.3s;
+}
+.fw-tile-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.fw-tile-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.fw-tile-star {
+  position: absolute; bottom: 14px; right: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px; color: rgba(17,16,16,0.18);
+  letter-spacing: 1px;
+}
+
+/* ─── OUTCOMES ─── */
+#outcomes { background: var(--cream); }
+
+.outcomes-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px; margin-top: 56px; align-items: start;
+}
+
+.outcomes-cards-v {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.oc-card {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 32px;
+  border-radius: 14px;
+  cursor: default; transition: all 0.3s;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.oc-card:hover { box-shadow: 0 12px 36px rgba(17,16,16,0.1); transform: translateY(-2px); }
+.oc-icon-box {
+  width: 56px; height: 56px; flex-shrink: 0;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+}
+.oc-icon-box.c1 { background: rgba(27,46,107,0.1); }
+.oc-icon-box.c2 { background: rgba(217,79,13,0.1); }
+.oc-icon-box.c3 { background: rgba(109,40,217,0.1); }
+.oc-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.oc-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ─── QUOTE CARD ─── */
+.quote-card {
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 20px;
+  padding: 48px 40px;
+  position: sticky; top: 100px;
+}
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; color: var(--orange);
+  line-height: 0.5; margin-bottom: 20px; display: block;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-style: italic;
+  font-weight: 700; line-height: 1.5;
+  color: var(--cream); margin-bottom: 28px;
+}
+.quote-text span { color: var(--orange2); font-style: normal; }
+.quote-divider { border-top: 1px solid rgba(255,255,255,0.12); margin: 28px 0; }
+
+/* Gauge Infographic */
+.gauge-wrap { margin-top: 28px; }
+.gauge-row {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 14px;
+}
+.gauge-label { font-size: 12px; color: rgba(247,243,238,0.6); min-width: 68px; }
+.gauge-track {
+  flex: 1; height: 10px; background: rgba(255,255,255,0.08);
+  border-radius: 100px; overflow: hidden;
+}
+.gauge-fill {
+  height: 100%; border-radius: 100px; width: 0;
+  transition: width 1.5s cubic-bezier(0.34,1.1,0.64,1);
+}
+.gauge-pct { font-size: 12px; font-weight: 700; color: var(--cream); min-width: 36px; text-align: right; }
+
+/* ─── CTA ─── */
+#cta {
+  background: linear-gradient(135deg, var(--orange) 0%, #b33800 100%);
+  padding: 100px 64px;
+  text-align: center;
+}
+.cta-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.cta-h2 em { font-style: italic; opacity: 0.7; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 44px; font-weight: 300; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  background: #fff; color: var(--orange);
+  font-size: 14px; font-weight: 700;
+  padding: 16px 40px; border-radius: 100px;
+  border: none; cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.25s; text-decoration: none; display: inline-block;
+}
+.btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+.btn-ghost-w {
+  background: transparent; color: #fff;
+  font-size: 14px; font-weight: 600;
+  padding: 16px 40px; border-radius: 100px;
+  border: 2px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.25s; text-decoration: none; display: inline-block;
+}
+.btn-ghost-w:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+footer {
+  background: var(--ink2);
+  padding: 28px 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(247,243,238,0.4);
+  letter-spacing: 0.5px;
+}
+
+/* ─── MODAL ─── */
+.modal-bg {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(17,16,16,0.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-bg.open { opacity: 1; pointer-events: all; }
+.modal-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 56px;
+  max-width: 480px; width: 90%;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s;
+  position: relative;
+}
+.modal-bg.open .modal-card { transform: scale(1) translateY(0); }
+.modal-x {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none;
+  font-size: 20px; color: var(--muted);
+  cursor: pointer; transition: color 0.2s;
+}
+.modal-x:hover { color: var(--orange); }
+.modal-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 900;
+  color: var(--ink); margin-bottom: 8px;
+}
+.modal-p { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.modal-in {
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; color: var(--ink);
+  background: var(--cream);
+  outline: none; transition: border-color 0.25s;
+}
+.modal-in:focus { border-color: var(--orange); }
+.modal-btn {
+  background: var(--orange); color: #fff;
+  border: none; border-radius: 100px;
+  padding: 16px; font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all 0.25s; margin-top: 6px;
+}
+.modal-btn:hover { background: var(--ink); box-shadow: 0 8px 24px rgba(217,79,13,0.25); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal-right.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  #hero { grid-template-columns: 1fr; padding: 120px 24px 60px; min-height: auto; gap: 40px; }
+  .wrap { padding: 0 24px; }
+  .vision-layout, .timeline-grid, .fw-grid, .outcomes-layout { grid-template-columns: 1fr; gap: 40px; }
+  .ch-grid { grid-template-columns: 1fr; }
+  .fw-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+  #cta { padding: 80px 24px; }
+  .fw-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">The Trade<span> Intelligence Podcast</span></a>
+  <ul class="nav-links">
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#whynow">Growth</a></li>
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#outcomes">Impact</a></li>
+  </ul>
+  <button class="nav-pill" onclick="openModal()">Get the Proposal</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-tag"><div class="hero-tag-dot"></div> The Trade Intelligence Podcast</div>
+    <h1 class="hero-h1">Trade<br><em>Intelligence</em></h1>
+    <p class="hero-sub">The Trade Intelligence Podcast — amplifying brand voice, establishing industry authority, and unlocking new revenue through strategic storytelling.</p>
+    <div class="hero-btns">
+      <a href="#vision" class="btn-filled">Explore the Vision</a>
+      <button class="btn-outline" onclick="openModal()">Request Full Deck</button>
+    </div>
+    <div class="hero-meta">
+      <div>
+        <div class="meta-num" data-count="2">0</div>
+        <div class="meta-label">Episodes / Month</div>
+      </div>
+      <div>
+        <div class="meta-num" data-count="11">0</div>
+        <div class="meta-label">Framework Pillars</div>
+      </div>
+      <div>
+        <div class="meta-num" data-count="4">0</div>
+        <div class="meta-label">Platforms</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RADAR CHART (SVG) -->
+  <div class="hero-visual reveal-right">
+    <div class="radar-wrap">
+      <svg id="radarSvg" viewBox="0 0 340 340" width="340" height="340" style="overflow:visible;">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Grid polygons -->
+        <g id="radar-grid" transform="translate(170,170)"></g>
+        <!-- Data polygon -->
+        <polygon id="radar-data" points="" fill="rgba(217,79,13,0.15)" stroke="#D94F0D" stroke-width="2" filter="url(#glow)"/>
+        <!-- Axis labels -->
+        <g id="radar-labels"></g>
+        <!-- Dots -->
+        <g id="radar-dots"></g>
+        <!-- Center dot -->
+        <circle cx="170" cy="170" r="4" fill="#D94F0D"/>
+        <!-- Center text -->
+        <text x="170" y="164" text-anchor="middle" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#111010">Brand</text>
+        <text x="170" y="182" text-anchor="middle" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#111010">Readiness</text>
+      </svg>
+    </div>
+    <div class="radar-label-list" id="radarLegend"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VISION -->
+<section id="vision" style="background:var(--white);">
+  <div class="wrap section-pad">
+    <div class="eyebrow reveal">Strategic Brand Positioning</div>
+    <h2 class="big-title reveal">The <em>Vision</em></h2>
+    <div class="vision-layout">
+      <div class="vision-text reveal-left">
+        <p>Launch a company podcast as a strategic initiative to <strong>enhance long-term social media visibility</strong>, strengthen brand positioning, and establish the organization as a recognized thought leader in the industry.</p>
+        <p>This is not just content — it is a long-term asset that compounds in authority, reach, and commercial value over time.</p>
+        <div class="vision-pill-row">
+          <div class="vision-pill">Thought Leadership</div>
+          <div class="vision-pill">Social Visibility</div>
+          <div class="vision-pill">Brand Positioning</div>
+          <div class="vision-pill">Revenue Growth</div>
+          <div class="vision-pill">Industry Authority</div>
+          <a href="#framework" class="vision-pill" style="background:var(--orange);color:#fff;">See the Framework →</a>
+        </div>
+      </div>
+
+      <!-- PIPELINE INFOGRAPHIC -->
+      <div class="pipeline-wrap reveal-right">
+        <div class="pipeline-title">// Strategic Goal Allocation</div>
+        <div class="pipeline-steps" id="pipelineSteps">
+          <div class="p-step">
+            <span class="p-step-num">01</span>
+            <span class="p-step-label">Visibility</span>
+            <div class="p-step-bar" data-w="88" style="width:0px;flex:1;max-width:180px"></div>
+            <span class="p-step-pct">88%</span>
+          </div>
+          <div class="p-step">
+            <span class="p-step-num">02</span>
+            <span class="p-step-label">Credibility</span>
+            <div class="p-step-bar" data-w="76" style="width:0px;flex:1;max-width:180px;background:linear-gradient(to right,#1B2E6B,#4a6fd8)"></div>
+            <span class="p-step-pct">76%</span>
+          </div>
+          <div class="p-step">
+            <span class="p-step-num">03</span>
+            <span class="p-step-label">Revenue</span>
+            <div class="p-step-bar" data-w="64" style="width:0px;flex:1;max-width:180px;background:linear-gradient(to right,#5b21b6,#9333ea)"></div>
+            <span class="p-step-pct">64%</span>
+          </div>
+          <div class="p-step">
+            <span class="p-step-num">04</span>
+            <span class="p-step-label">Engagement</span>
+            <div class="p-step-bar" data-w="92" style="width:0px;flex:1;max-width:180px;background:linear-gradient(to right,#059669,#34d399)"></div>
+            <span class="p-step-pct">92%</span>
+          </div>
+          <div class="p-step">
+            <span class="p-step-num">05</span>
+            <span class="p-step-label">Authority</span>
+            <div class="p-step-bar" data-w="82" style="width:0px;flex:1;max-width:180px;background:linear-gradient(to right,#c8973a,#f5cc7a)"></div>
+            <span class="p-step-pct">82%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section id="challenges">
+  <div class="wrap section-pad">
+    <div class="eyebrow" style="color:var(--orange2);" class="reveal">Roadblocks & Mitigation</div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:0;">
+      <h2 class="big-title reveal" style="color:var(--cream);">Key <em>Challenges</em></h2>
+      <p class="body-text reveal" style="color:rgba(247,243,238,0.45); text-align:right; max-width:320px;">Four critical areas proactively identified and addressed for a seamless launch.</p>
+    </div>
+    <div class="ch-grid">
+      <div class="ch-card reveal">
+        <span class="ch-num">01</span>
+        <div class="ch-icon">💰</div>
+        <div class="ch-tag">Investment</div>
+        <div class="ch-title">Budget Allocation</div>
+        <div class="ch-desc">Securing resources for professional-grade equipment, software licensing, hosting platforms, and launch marketing campaigns.</div>
+      </div>
+      <div class="ch-card reveal">
+        <span class="ch-num">02</span>
+        <div class="ch-icon">🤝</div>
+        <div class="ch-tag">Team</div>
+        <div class="ch-title">Building the Right Team</div>
+        <div class="ch-desc">Assembling dedicated talent with expertise in production, editing, on-air hosting, and long-term content strategy.</div>
+      </div>
+      <div class="ch-card reveal">
+        <span class="ch-num">03</span>
+        <div class="ch-icon">🎙️</div>
+        <div class="ch-tag">Guests</div>
+        <div class="ch-title">Securing Key Voices</div>
+        <div class="ch-desc">Identifying and booking high-value industry experts, policymakers, and thought leaders to elevate credibility and reach.</div>
+      </div>
+      <div class="ch-card reveal">
+        <span class="ch-num">04</span>
+        <div class="ch-icon">📣</div>
+        <div class="ch-tag">Promotion</div>
+        <div class="ch-title">Audience Reach</div>
+        <div class="ch-desc">Deploying effective multi-channel marketing and platform optimization strategies to reach and grow the target audience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="whynow">
+  <div class="wrap section-pad">
+    <div class="eyebrow reveal">Strategic Growth</div>
+    <h2 class="big-title reveal">Why <em>Now?</em></h2>
+    <div class="timeline-grid">
+
+      <!-- Concentric Rings Infographic -->
+      <div class="reveal-left">
+        <div class="rings-wrap">
+          <svg id="ringSvg" viewBox="0 0 320 320" width="320" height="320">
+            <defs>
+              <filter id="ringShadow">
+                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(217,79,13,0.2)"/>
+              </filter>
+            </defs>
+            <!-- Ring 4 (outermost) -->
+            <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(17,16,16,0.06)" stroke-width="22"/>
+            <circle cx="160" cy="160" r="140" fill="none" stroke="#059669" stroke-width="22"
+              stroke-dasharray="0 879" stroke-dashoffset="-220"
+              id="ring4" stroke-linecap="round" style="transform-origin:center;transform:rotate(-90deg) translateX(-320px) translateY(0px);"/>
+            <!-- Ring 3 -->
+            <circle cx="160" cy="160" r="108" fill="none" stroke="rgba(17,16,16,0.06)" stroke-width="22"/>
+            <circle cx="160" cy="160" r="108" fill="none" stroke="#6d28d9" stroke-width="22"
+              stroke-dasharray="0 679" id="ring3" stroke-linecap="round"/>
+            <!-- Ring 2 -->
+            <circle cx="160" cy="160" r="76" fill="none" stroke="rgba(17,16,16,0.06)" stroke-width="22"/>
+            <circle cx="160" cy="160" r="76" fill="none" stroke="#1B2E6B" stroke-width="22"
+              stroke-dasharray="0 478" id="ring2" stroke-linecap="round"/>
+            <!-- Ring 1 (innermost) -->
+            <circle cx="160" cy="160" r="44" fill="none" stroke="rgba(17,16,16,0.06)" stroke-width="22"/>
+            <circle cx="160" cy="160" r="44" fill="none" stroke="#D94F0D" stroke-width="22"
+              stroke-dasharray="0 277" id="ring1" stroke-linecap="round"/>
+            <!-- Center -->
+            <circle cx="160" cy="160" r="22" fill="var(--ink)"/>
+            <text x="160" y="155" text-anchor="middle" fill="var(--cream)" font-family="Playfair Display, serif" font-size="9" font-weight="700">4</text>
+            <text x="160" y="166" text-anchor="middle" fill="var(--cream)" font-family="Outfit, sans-serif" font-size="7">REASONS</text>
+          </svg>
+        </div>
+        <div class="rings-legend" id="ringsLegend">
+          <div class="rl-item">
+            <div class="rl-name">Visibility</div>
+            <div class="rl-bar-outer"><div class="rl-bar-inner" data-w="85" style="background:#D94F0D"></div></div>
+            <div class="rl-val" style="color:#D94F0D">85%</div>
+          </div>
+          <div class="rl-item">
+            <div class="rl-name">Credibility</div>
+            <div class="rl-bar-outer"><div class="rl-bar-inner" data-w="72" style="background:#1B2E6B"></div></div>
+            <div class="rl-val" style="color:#1B2E6B">72%</div>
+          </div>
+          <div class="rl-item">
+            <div class="rl-name">Engagement</div>
+            <div class="rl-bar-outer"><div class="rl-bar-inner" data-w="90" style="background:#6d28d9"></div></div>
+            <div class="rl-val" style="color:#6d28d9">90%</div>
+          </div>
+          <div class="rl-item">
+            <div class="rl-name">Revenue</div>
+            <div class="rl-bar-outer"><div class="rl-bar-inner" data-w="60" style="background:#059669"></div></div>
+            <div class="rl-val" style="color:#059669">60%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-reasons">
+        <div class="tl-item reveal-right">
+          <div class="tl-card">
+            <div class="tl-icon-box">🌐</div>
+            <div>
+              <div class="tl-num">// 01</div>
+              <div class="tl-title">Global Digital Visibility</div>
+              <div class="tl-desc">Sustained global visibility across digital and social platforms — reaching audiences wherever they consume content daily.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal-right">
+          <div class="tl-card">
+            <div class="tl-icon-box">🏆</div>
+            <div>
+              <div class="tl-num">// 02</div>
+              <div class="tl-title">Industry Authority</div>
+              <div class="tl-desc">Enhanced brand credibility through curated expert conversations that signal deep domain knowledge and leadership.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal-right">
+          <div class="tl-card">
+            <div class="tl-icon-box">💬</div>
+            <div>
+              <div class="tl-num">// 03</div>
+              <div class="tl-title">Audience Engagement</div>
+              <div class="tl-desc">Deeper audience engagement converting passive followers into active participants and business opportunities.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal-right">
+          <div class="tl-card">
+            <div class="tl-icon-box">💰</div>
+            <div>
+              <div class="tl-num">// 04</div>
+              <div class="tl-title">Revenue Through Partnerships</div>
+              <div class="tl-desc">Sponsorships and strategic partnerships create a new, scalable income stream aligned with brand values.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section id="framework" style="background:var(--white);">
+  <div class="wrap section-pad">
+    <div class="fw-header">
+      <div>
+        <div class="eyebrow reveal">Strategic Implementation</div>
+        <h2 class="big-title reveal">11-Component <em>Framework</em></h2>
+      </div>
+      <p class="fw-right-text reveal">A comprehensive operational system engineered for sustainable, measurable podcast growth.</p>
+    </div>
+
+    <!-- PROCESS FLOW INFOGRAPHIC -->
+    <div class="process-flow reveal" id="processFlow">
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(217,79,13,0.1); border:2px solid var(--orange);">📞</div>
+        <div class="pf-label">Outreach</div>
+      </div>
+      <div class="pf-arrow"></div>
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(27,46,107,0.1); border:2px solid var(--blue);">🎙️</div>
+        <div class="pf-label">Record</div>
+      </div>
+      <div class="pf-arrow" style="background:linear-gradient(to right,var(--blue),#9333ea)"></div>
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(109,40,217,0.1); border:2px solid #6d28d9;">✂️</div>
+        <div class="pf-label">Edit</div>
+      </div>
+      <div class="pf-arrow" style="background:linear-gradient(to right,#9333ea,#059669)"></div>
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(5,150,105,0.1); border:2px solid #059669;">🚀</div>
+        <div class="pf-label">Distribute</div>
+      </div>
+      <div class="pf-arrow" style="background:linear-gradient(to right,#059669,var(--gold))"></div>
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(200,151,58,0.1); border:2px solid var(--gold);">📊</div>
+        <div class="pf-label">Measure</div>
+      </div>
+      <div class="pf-arrow" style="background:linear-gradient(to right,var(--gold),var(--orange))"></div>
+      <div class="pf-step">
+        <div class="pf-circle" style="background:rgba(217,79,13,0.1); border:2px solid var(--orange);">🔁</div>
+        <div class="pf-label">Follow-up</div>
+      </div>
+    </div>
+
+    <div class="fw-grid">
+      <div class="fw-tile reveal"><div class="fw-tile-icon">📊</div><div class="fw-tile-tag">Metrics</div><div class="fw-tile-title">Measure</div><div class="fw-tile-desc">KPI tracking: downloads, engagement rate, guest diversity, lead gen.</div><div class="fw-tile-star">M1</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">🔍</div><div class="fw-tile-tag">Evaluation</div><div class="fw-tile-title">Monitor</div><div class="fw-tile-desc">Monthly performance audits and strategic content alignment reviews.</div><div class="fw-tile-star">M2</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">📅</div><div class="fw-tile-tag">Operations</div><div class="fw-tile-title">Manage</div><div class="fw-tile-desc">2 episodes/month with strict calendar control and a rolling guest pipeline.</div><div class="fw-tile-star">M3</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">💲</div><div class="fw-tile-tag">Sustainability</div><div class="fw-tile-title">Money</div><div class="fw-tile-desc">Branded segments and sponsorship tiers for long-term monetization.</div><div class="fw-tile-star">M4</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">👥</div><div class="fw-tile-tag">Talent</div><div class="fw-tile-title">Man</div><div class="fw-tile-desc">Curation of policymakers, industry leaders, and institutional stakeholders.</div><div class="fw-tile-star">M5</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">🤖</div><div class="fw-tile-tag">Technology</div><div class="fw-tile-title">Machine</div><div class="fw-tile-desc">High-fidelity recording, AI-enabled editing, and analytics-driven hosting.</div><div class="fw-tile-star">M6</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">⏱️</div><div class="fw-tile-tag">Timing</div><div class="fw-tile-title">Time</div><div class="fw-tile-desc">Release sync with G7, G20, and major policy event cycles worldwide.</div><div class="fw-tile-star">M7</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">⚙️</div><div class="fw-tile-tag">Workflow</div><div class="fw-tile-title">Process</div><div class="fw-tile-desc">End-to-end: Outreach → Recording → Edit → Distribute → Follow-up.</div><div class="fw-tile-star">M8</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">📣</div><div class="fw-tile-tag">Marketing</div><div class="fw-tile-title">Promote</div><div class="fw-tile-desc">Integrated social campaigns, newsletters, and partner amplification.</div><div class="fw-tile-star">M9</div></div>
+      <div class="fw-tile reveal"><div class="fw-tile-icon">🌍</div><div class="fw-tile-tag">Distribution</div><div class="fw-tile-title">Place</div><div class="fw-tile-desc">Spotify, YouTube, Apple Podcasts, and dedicated website.</div><div class="fw-tile-star">M10</div></div>
+      <div class="fw-tile reveal" style="background:var(--ink);border-color:var(--ink);">
+        <div class="fw-tile-icon">🎯</div>
+        <div class="fw-tile-tag" style="color:var(--orange2);">Core</div>
+        <div class="fw-tile-title" style="color:var(--cream);">Purpose</div>
+        <div class="fw-tile-desc" style="color:rgba(247,243,238,0.55);">Every component serves one goal: amplify brand voice and authority.</div>
+        <div class="fw-tile-star" style="color:rgba(255,255,255,0.15);">M11</div>
+      </div>
+      <div class="fw-tile reveal" style="background:var(--orange);border-color:var(--orange);cursor:pointer;" onclick="openModal()">
+        <div class="fw-tile-icon">🚀</div>
+        <div class="fw-tile-tag" style="color:rgba(255,255,255,0.75);">Action</div>
+        <div class="fw-tile-title" style="color:#fff;">Get Started</div>
+        <div class="fw-tile-desc" style="color:rgba(255,255,255,0.8);">Ready to launch? Request the full strategic proposal now.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="wrap section-pad">
+    <div class="eyebrow reveal">Business Impact</div>
+    <h2 class="big-title reveal">Expected <em>Outcomes</em></h2>
+    <div class="outcomes-layout">
+      <div class="outcomes-cards-v">
+        <div class="oc-card reveal">
+          <div class="oc-icon-box c1">📈</div>
+          <div>
+            <div class="oc-title">Brand Equity</div>
+            <div class="oc-desc">Strengthen digital presence and long-term brand value through consistent, high-quality thought leadership content that compounds over time.</div>
+          </div>
+        </div>
+        <div class="oc-card reveal">
+          <div class="oc-icon-box c2">🌐</div>
+          <div>
+            <div class="oc-title">Market Reach</div>
+            <div class="oc-desc">Expand audience far beyond traditional channels — tapping into podcast listeners, YouTube subscribers, and engaged social communities globally.</div>
+          </div>
+        </div>
+        <div class="oc-card reveal">
+          <div class="oc-icon-box c3">💡</div>
+          <div>
+            <div class="oc-title">Revenue Streams</div>
+            <div class="oc-desc">Unlock new opportunities via strategic sponsorships, branded content partnerships, and scalable premium engagement tiers aligned to brand values.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUOTE CARD with Gauge infographic -->
+      <div class="quote-card reveal-right">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">Positioning the brand for the <span>future of digital consumption.</span></p>
+        <div class="quote-divider"></div>
+        <div style="font-size:11px; font-family:'Space Mono',monospace; letter-spacing:2px; text-transform:uppercase; color:rgba(247,243,238,0.4); margin-bottom:16px;">// Impact Forecast</div>
+        <div class="gauge-wrap" id="gauges">
+          <div class="gauge-row">
+            <span class="gauge-label">Brand Equity</span>
+            <div class="gauge-track"><div class="gauge-fill" data-w="85" style="background:linear-gradient(to right,#D94F0D,#FF6B35)"></div></div>
+            <span class="gauge-pct">+85%</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">Market Reach</span>
+            <div class="gauge-track"><div class="gauge-fill" data-w="78" style="background:linear-gradient(to right,#1B2E6B,#4a6fd8)"></div></div>
+            <span class="gauge-pct">+78%</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">Revenue</span>
+            <div class="gauge-track"><div class="gauge-fill" data-w="62" style="background:linear-gradient(to right,#6d28d9,#a855f7)"></div></div>
+            <span class="gauge-pct">+62%</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">Engagement</span>
+            <div class="gauge-track"><div class="gauge-fill" data-w="91" style="background:linear-gradient(to right,#059669,#34d399)"></div></div>
+            <span class="gauge-pct">+91%</span>
+          </div>
+        </div>
+        <div style="margin-top:28px; padding-top:20px; border-top: 1px solid rgba(255,255,255,0.1); display:flex; gap:12px;">
+          <button class="btn-white" onclick="openModal()" style="flex:1; font-size:12px; padding:12px 16px; text-align:center;">Get Proposal</button>
+          <a href="#framework" class="btn-ghost-w" style="flex:1; font-size:12px; padding:12px 16px; text-align:center;">View Plan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div>
+    <div class="eyebrow reveal" style="color:rgba(255,255,255,0.6);">Take the Next Step</div>
+    <h2 class="cta-h2 reveal">Ready to<br><em>Amplify?</em></h2>
+    <p class="cta-sub reveal">Let's build something remarkable together. Start the conversation today.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-white" onclick="openModal()">Request the Full Proposal</button>
+      <a href="#vision" class="btn-ghost-w">Review the Plan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 The Trade Intelligence Podcast</span>
+  <span>WTC Shamshabad · Visakhapatnam · Genome Valley · Hosur</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-card">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-h">Get the Full Proposal</div>
+    <p class="modal-p">We'll send the complete strategic deck directly to your inbox.</p>
+    <form class="modal-form" onsubmit="handleSubmit(event)">
+      <input type="text" class="modal-in" placeholder="Your Name" required />
+      <input type="email" class="modal-in" placeholder="Work Email" required />
+      <input type="text" class="modal-in" placeholder="Organization" />
+      <button type="submit" class="modal-btn">Send Me the Proposal →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ── MODAL ──
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.modal-btn');
+  btn.textContent = '✓ Sent! We\'ll be in touch soon.';
+  btn.style.background = '#059669';
+  setTimeout(closeModal, 2000);
+}
+document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
+
+// ── RADAR CHART ──
+const radarData = [
+  { label: 'Visibility', value: 0.88, color: '#D94F0D' },
+  { label: 'Credibility', value: 0.82, color: '#1B2E6B' },
+  { label: 'Engagement', value: 0.90, color: '#059669' },
+  { label: 'Revenue', value: 0.65, color: '#6d28d9' },
+  { label: 'Authority', value: 0.78, color: '#C8973A' },
+  { label: 'Reach', value: 0.85, color: '#E64F0D' },
+];
+const cx = 170, cy = 170, maxR = 130, n = radarData.length;
+const grid = document.getElementById('radar-grid');
+const labelsG = document.getElementById('radar-labels');
+const dotsG = document.getElementById('radar-dots');
+const dataPoly = document.getElementById('radar-data');
+const legend = document.getElementById('radarLegend');
+
+// Draw grid
+[0.25,0.5,0.75,1].forEach(scale => {
+  const pts = radarData.map((_,i) => {
+    const a = (Math.PI*2/n)*i - Math.PI/2;
+    return `${Math.cos(a)*maxR*scale},${Math.sin(a)*maxR*scale}`;
+  }).join(' ');
+  const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  poly.setAttribute('points', pts);
+  poly.setAttribute('fill','none');
+  poly.setAttribute('stroke','rgba(17,16,16,0.08)');
+  poly.setAttribute('stroke-width','1');
+  grid.appendChild(poly);
+});
+// Axis lines
+radarData.forEach((_,i) => {
+  const a = (Math.PI*2/n)*i - Math.PI/2;
+  const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+  line.setAttribute('x1',cx); line.setAttribute('y1',cy);
+  line.setAttribute('x2', cx + Math.cos(a)*maxR);
+  line.setAttribute('y2', cy + Math.sin(a)*maxR);
+  line.setAttribute('stroke','rgba(17,16,16,0.08)');
+  line.setAttribute('stroke-width','1');
+  document.getElementById('radarSvg').appendChild(line);
+});
+
+// Labels
+radarData.forEach((d,i) => {
+  const a = (Math.PI*2/n)*i - Math.PI/2;
+  const lx = cx + Math.cos(a)*(maxR+18);
+  const ly = cy + Math.sin(a)*(maxR+18);
+  const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  txt.setAttribute('x', lx); txt.setAttribute('y', ly+4);
+  txt.setAttribute('text-anchor','middle');
+  txt.setAttribute('fill', d.color);
+  txt.setAttribute('font-family','Outfit, sans-serif');
+  txt.setAttribute('font-size','11');
+  txt.setAttribute('font-weight','600');
+  txt.textContent = d.label;
+  labelsG.appendChild(txt);
+});
+
+// Data (animated)
+let radarAnimated = false;
+function animateRadar() {
+  if (radarAnimated) return;
+  radarAnimated = true;
+  let progress = 0;
+  const anim = setInterval(() => {
+    progress = Math.min(progress + 0.04, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const pts = radarData.map((d,i) => {
+      const a = (Math.PI*2/n)*i - Math.PI/2;
+      const r = d.value * maxR * ease;
+      return `${cx + Math.cos(a)*r},${cy + Math.sin(a)*r}`;
+    }).join(' ');
+    dataPoly.setAttribute('points', pts);
+    dotsG.innerHTML = '';
+    radarData.forEach((d,i) => {
+      const a = (Math.PI*2/n)*i - Math.PI/2;
+      const r = d.value * maxR * ease;
+      const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx', cx + Math.cos(a)*r);
+      c.setAttribute('cy', cy + Math.sin(a)*r);
+      c.setAttribute('r','5');
+      c.setAttribute('fill', d.color);
+      c.setAttribute('stroke','white');
+      c.setAttribute('stroke-width','2');
+      dotsG.appendChild(c);
+    });
+    if (progress >= 1) clearInterval(anim);
+  }, 16);
+}
+
+// Legend
+radarData.forEach(d => {
+  const item = document.createElement('div');
+  item.className = 'radar-li';
+  item.innerHTML = `<div class="radar-li-dot" style="background:${d.color}"></div><span>${d.label}</span><span style="margin-left:auto;font-size:11px;font-weight:700;color:${d.color}">${Math.round(d.value*100)}%</span>`;
+  legend.appendChild(item);
+});
+
+// ── CONCENTRIC RINGS ANIMATION ──
+let ringsAnimated = false;
+function animateRings() {
+  if (ringsAnimated) return;
+  ringsAnimated = true;
+  const rings = [
+    { el: document.getElementById('ring1'), circ: 276, pct: 0.85, delay: 0, color: '#D94F0D' },
+    { el: document.getElementById('ring2'), circ: 478, pct: 0.72, delay: 200, color: '#1B2E6B' },
+    { el: document.getElementById('ring3'), circ: 679, pct: 0.90, delay: 400, color: '#6d28d9' },
+    { el: document.getElementById('ring4'), circ: 879, pct: 0.60, delay: 600, color: '#059669' },
+  ];
+  rings.forEach(r => {
+    setTimeout(() => {
+      r.el.setAttribute('stroke-dasharray', `${r.circ * r.pct} ${r.circ}`);
+      r.el.setAttribute('stroke-dashoffset', (r.circ * 0.25).toString());
+      r.el.style.transition = 'stroke-dasharray 1.4s cubic-bezier(0.34,1.1,0.64,1)';
+    }, r.delay);
+  });
+}
+
+// ── SCROLL REVEAL + TRIGGER INFOGRAPHICS ──
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const iObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => iObs.observe(r));
+
+// Radar observer
+const radarEl = document.querySelector('.radar-wrap');
+if (radarEl) {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) animateRadar();
+  }, { threshold: 0.3 }).observe(radarEl);
+}
+
+// Rings observer
+const ringsEl = document.getElementById('ringSvg');
+if (ringsEl) {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) animateRings();
+  }, { threshold: 0.3 }).observe(ringsEl);
+}
+
+// Generic bar/fill animation observer
+function triggerBars(els) {
+  els.forEach(el => {
+    const target = el.dataset.w;
+    el.style.width = target + '%';
+  });
+}
+document.querySelectorAll('.p-step-bar, .rl-bar-inner, .gauge-fill').forEach(el => {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { el.style.width = el.dataset.w + '%'; }
+  }, { threshold: 0.4 }).observe(el);
+});
+
+// ── COUNTER ──
+document.querySelectorAll('[data-count]').forEach(el => {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      const target = +el.dataset.count;
+      let cur = 0;
+      const t = setInterval(() => {
+        cur = Math.min(cur + Math.ceil(target/25), target);
+        el.textContent = cur;
+        if (cur >= target) clearInterval(t);
+      }, 50);
+    }
+  }, { threshold: 0.5 }).observe(el);
+});
+
+// ── NAV ACTIVE ──
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === `#${cur}`);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
